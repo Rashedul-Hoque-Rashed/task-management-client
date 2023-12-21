@@ -8,6 +8,7 @@ import About from "../Pages/About";
 import Error from "../Pages/Error";
 import Task from "../Layouts/task";
 import TaskManagement from "../Pages/TaskManagement";
+import PostTask from "../Pages/PostTask";
 
 export const router = createBrowserRouter([
     {
@@ -45,7 +46,11 @@ export const router = createBrowserRouter([
             {
                 path: '/task/taskManagement',
                 element: <TaskManagement/>
-            }
+            },
+            {
+                path: '/task/post',
+                element: <PostTask/>
+            },
         ]
     }
   ]);

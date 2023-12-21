@@ -14,7 +14,7 @@ const Task = () => {
             Task Management
         </NavLink></li>
         <li><NavLink
-            to="/post"
+            to="/task/post"
             className={({ isActive }) =>
                 isActive ? "mr-6 text-[#fcb650] text-lg font-semibold" : "mr-6 text-white text-lg font-semibold"
             }
@@ -22,7 +22,7 @@ const Task = () => {
             Post Task
         </NavLink></li>
         <li><NavLink
-            to="/post"
+            to="/task/myTask"
             className={({ isActive }) =>
                 isActive ? "mr-6 text-[#fcb650] text-lg font-semibold" : "mr-6 text-white text-lg font-semibold"
             }
@@ -86,7 +86,7 @@ const Task = () => {
 
 
 
-            <div className="px-6 py-12">
+            <div className="px-6 py-2">
                 <Outlet />
             </div>
         </div>
