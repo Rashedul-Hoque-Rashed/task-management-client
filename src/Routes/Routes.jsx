@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import SingIn from "../Pages/singIn";
 import SingUp from "../Pages/SingUp";
 import Contact from "../Pages/Contact";
+import About from "../Pages/About";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
         {
             path: '/contact',
             element: <Contact/>
+        },
+        {
+            path: '/about',
+            element: <About/>
         },
       ]
     },
