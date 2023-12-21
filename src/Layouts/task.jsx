@@ -73,7 +73,7 @@ const Task = () => {
                     </label>
                     <img src="" alt="" className="w-10 h-10 rounded-full" />
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side overflow-hidden z-10">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 min-h-full bg-[#03211b] text-base-content">
                         {/* Sidebar content here */}
