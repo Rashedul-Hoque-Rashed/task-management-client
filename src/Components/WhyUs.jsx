@@ -6,7 +6,7 @@ import { FiCheckCircle } from "react-icons/fi";
 
 const WhyUs = () => {
     return (
-        <div className='my-24 overflow-x-hidden'>
+        <div className='my-12 overflow-x-hidden'>
             <div className="px-4 md:px-10 py-28 flex items-center justify-center gap-20 flex-col-reverse lg:flex-row max-w-[1620px] mx-auto">
                 <div data-aos="fade-right" data-aos-duration="2000" className="flex-1">
                     <img src={whyUsImg} alt="" />

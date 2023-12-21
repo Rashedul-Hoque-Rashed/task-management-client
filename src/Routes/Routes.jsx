@@ -5,11 +5,13 @@ import SingIn from "../Pages/singIn";
 import SingUp from "../Pages/SingUp";
 import Contact from "../Pages/Contact";
 import About from "../Pages/About";
+import Error from "../Pages/Error";
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main/>,
+      errorElement: <Error/>,
       children: [
         {
             path: '/',

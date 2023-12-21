@@ -40,7 +40,7 @@ const Navbar = () => {
              isActive ? "mr-6 text-[#fcb650] text-lg font-semibold" : "mr-6 text-white text-lg font-semibold"
             }
         >
-            Task
+            Task-Management
         </NavLink>
         <NavLink
             to="/about"

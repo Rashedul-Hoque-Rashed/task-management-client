@@ -42,7 +42,7 @@ const AskedQuestions = () => {
 
             <div className="mt-16">
                 {
-                    faqData.map(faq => <details key={faq.question} className="w-full rounded-xl bg-base-200">
+                    faqData.map(faq => <details key={faq.question} className="w-full rounded-xl bg-base-200 mb-4">
                         <summary className="px-6 py-10 text-[#222e48] text-xl font-semibold">
                             {faq.question}
                         </summary>
