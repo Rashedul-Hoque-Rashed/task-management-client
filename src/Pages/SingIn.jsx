@@ -51,7 +51,7 @@ const SingIn = () => {
                                 SignUp
                             </Link></p>
                             <div className="form-control mt-6">
-                                <button className="btn text-[#074c3e] text-start border border-[#074c3e] rounded-full px-6 py-3 flex items-center gap-4 hover:text-white hover:bg-[#074c3e]">
+                                <button type='submit' className="btn text-[#074c3e] text-start border border-[#074c3e] rounded-full px-6 py-3 flex items-center gap-4 hover:text-white hover:bg-[#074c3e]">
                                     Login
                                     <LuArrowUpRight className='w-6 h-6' />
                                 </button>
