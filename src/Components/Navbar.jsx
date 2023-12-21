@@ -66,7 +66,7 @@ const Navbar = () => {
 
 
     return (
-        <div className={`fixed max-w-full top-0 left-0 right-0 mx-auto z-10 overflow-hidden ${
+        <div className={`fixed max-w-full top-0 left-0 right-0 mx-auto z-10 ${
             isScrolled ? 'bg-black' : 'bg-none'
           }`}>
             <div className='navbar  max-w-[1620px] top-0 left-0 right-0 mx-auto px-4 md:px-10 py-4 md:py-6'>
@@ -79,8 +79,8 @@ const Navbar = () => {
                         <li>{navLink}</li>
                     </ul>
                 </div>
-                <Link>
-                {/* <img src={logo} alt="" /> */}
+                <Link to='/'>
+                <h4 className="text-4xl font-bold text-white">Task<span className="text-[#fcb650]">Flow</span></h4>
                 </Link>
             </div>
             <div data-aos="zoom-in" data-aos-duration="2000" className="navbar-center hidden lg:flex">
