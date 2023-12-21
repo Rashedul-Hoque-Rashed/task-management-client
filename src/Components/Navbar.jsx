@@ -89,7 +89,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div data-aos="fade-left" data-aos-duration="2000" className="navbar-end">
-                <Link to='/login'>
+                <Link to='/singIn'>
                 <button className="text-[#fcb650] w-fit border border-[#fcb650] rounded-full px-6 py-3 text-xs md:text-base font-semibold hover:border-[#074c3e] hover:text-white hover:bg-[#074c3e] flex items-center gap-2">
                 Sing In
                 <LuLogIn className="w-6 h-6"/>
