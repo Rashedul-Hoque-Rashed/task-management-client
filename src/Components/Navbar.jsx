@@ -35,7 +35,7 @@ const Navbar = () => {
             Home
         </NavLink>
         <NavLink
-            to="/task"
+            to="/task/taskManagement"
             className={({ isActive }) =>
              isActive ? "mr-6 text-[#fcb650] text-lg font-semibold" : "mr-6 text-white text-lg font-semibold"
             }

@@ -6,6 +6,8 @@ import SingUp from "../Pages/SingUp";
 import Contact from "../Pages/Contact";
 import About from "../Pages/About";
 import Error from "../Pages/Error";
+import Task from "../Layouts/task";
+import TaskManagement from "../Pages/TaskManagement";
 
 export const router = createBrowserRouter([
     {
@@ -35,4 +37,15 @@ export const router = createBrowserRouter([
         },
       ]
     },
+    {
+        path: '/task',
+        element: <Task/>,
+        errorElement: <Error/>,
+        children: [
+            {
+                path: '/task/taskManagement',
+                element: <TaskManagement/>
+            }
+        ]
+    }
   ]);
