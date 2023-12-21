@@ -20,7 +20,7 @@ const TaskManagement = () => {
 
 
     return (
-        <div className="flex justify-between gap-10">
+        <div className="flex justify-between gap-10 flex-col lg:flex-row">
             <div className="flex-1">
                 <div className="border-4 border-red-400 rounded-full"></div>
                 <h4 className="text-center text-2xl font-bold mt-2 mb-6">To-Do</h4>
@@ -34,7 +34,7 @@ const TaskManagement = () => {
                                 </div>
                                 <p className="text-[#222E48] my-2">{task.description}</p>
                                 <p className="text-base font-medium text-white px-4 py-2 bg-rose-700 w-fit rounded-full">{task.priority}</p>
-                                <div className="flex items-center mt-4 gap-4">
+                                <div className="flex items-center mt-4 gap-4 flex-col md:flex-row">
                                     <img src={task.userImage} alt="" className="w-14 h-14 rounded-full"/>
                                     <div>
                                         <h4 className="text-[#222E48] font-medium">{task.userName}</h4>
@@ -59,7 +59,7 @@ const TaskManagement = () => {
                                 </div>
                                 <p className="text-[#222E48] my-2">{task.description}</p>
                                 <p className="text-base font-medium text-white px-4 py-2 bg-rose-700 w-fit rounded-full">{task.priority}</p>
-                                <div className="flex items-center mt-4 gap-4">
+                                <div className="flex items-center mt-4 gap-4 flex-col md:flex-row">
                                     <img src={task.userImage} alt="" className="w-14 h-14 rounded-full"/>
                                     <div>
                                         <h4 className="text-[#222E48] font-medium">{task.userName}</h4>
@@ -84,7 +84,7 @@ const TaskManagement = () => {
                                 </div>
                                 <p className="text-[#222E48] my-2">{task.description}</p>
                                 <p className="text-base font-medium text-white px-4 py-2 bg-rose-700 w-fit rounded-full">{task.priority}</p>
-                                <div className="flex items-center mt-4 gap-4">
+                                <div className="flex items-center mt-4 gap-4 flex-col md:flex-row">
                                     <img src={task.userImage} alt="" className="w-14 h-14 rounded-full"/>
                                     <div>
                                         <h4 className="text-[#222E48] font-medium">{task.userName}</h4>

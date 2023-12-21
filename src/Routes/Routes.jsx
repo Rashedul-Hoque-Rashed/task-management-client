@@ -9,48 +9,59 @@ import Error from "../Pages/Error";
 import Task from "../Layouts/task";
 import TaskManagement from "../Pages/TaskManagement";
 import PostTask from "../Pages/PostTask";
+import MyTask from "../Pages/MyTask";
+import Update from "../Pages/Update";
 
 export const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Main/>,
-      errorElement: <Error/>,
-      children: [
-        {
-            path: '/',
-            element: <Home/>
-        },
-        {
-            path: '/singIn',
-            element: <SingIn/>
-        },
-        {
-            path: '/singUp',
-            element: <SingUp/>
-        },
-        {
-            path: '/contact',
-            element: <Contact/>
-        },
-        {
-            path: '/about',
-            element: <About/>
-        },
-      ]
+        path: "/",
+        element: <Main />,
+        errorElement: <Error />,
+        children: [
+            {
+                path: '/',
+                element: <Home />
+            },
+            {
+                path: '/singIn',
+                element: <SingIn />
+            },
+            {
+                path: '/singUp',
+                element: <SingUp />
+            },
+            {
+                path: '/contact',
+                element: <Contact />
+            },
+            {
+                path: '/about',
+                element: <About />
+            },
+        ]
     },
     {
         path: '/task',
-        element: <Task/>,
-        errorElement: <Error/>,
+        element: <Task />,
+        errorElement: <Error />,
         children: [
             {
                 path: '/task/taskManagement',
-                element: <TaskManagement/>
+                element: <TaskManagement />
             },
             {
                 path: '/task/post',
-                element: <PostTask/>
+                element: <PostTask />
+            },
+            {
+                path: '/task/myTask',
+                element: <MyTask />
+            },
+            {
+                path: '/task/myTask/update/:id',
+                element: <Update />,
+                loader: ({ params }) => fetch(`http://localhost:5000/tasks/update/${params.id}`)
             },
         ]
     }
-  ]);
+]);
