@@ -41,7 +41,7 @@ const MyTask = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`https://task-management-server-iota-six.vercel.app/tasks/${id}`, {
+                    fetch(`https://task-manage-ten.vercel.app/tasks/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

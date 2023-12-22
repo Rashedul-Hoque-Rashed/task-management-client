@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://task-management-server-iota-six.vercel.app',
-    withCredentials: true
+    baseURL: 'https://task-manage-ten.vercel.app'
   });
 
 const UseAxios = () => {

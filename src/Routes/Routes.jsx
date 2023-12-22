@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
             {
                 path: '/task/myTask/update/:id',
                 element: <Update />,
-                loader: ({ params }) => fetch(`https://task-management-server-iota-six.vercel.app/tasks/update/${params.id}`)
+                loader: ({ params }) => fetch(`https://task-manage-ten.vercel.app/tasks/update/${params.id}`)
             },
         ]
     }
