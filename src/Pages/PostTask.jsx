@@ -2,10 +2,13 @@ import { useForm } from "react-hook-form"
 import { LuArrowUpRight } from "react-icons/lu";
 import UseAxios from "../Hooks/UseAxios";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 
 const PostTask = () => {
 
+    const { user } = useContext(AuthContext);
     const { register } = useForm();
     const axios = UseAxios();
 
@@ -17,12 +20,11 @@ const PostTask = () => {
         const deadline = form.deadline.value;
         const priority = form.priority.value;
         const description = form.description.value;
-        // const userName = user.displayName;
-        // const userEmail = user.email;
-        // const userImage = user.photoUrl;
+        const userName = user.displayName;
+        const userEmail = user.email;
+        const userImage = user.photoURL;
 
-        const postTask = { title, deadline, priority, description, status: 'To-Do'}
-        // userName, userEmail, userrImage }
+        const postTask = { title, deadline, priority, description, status: 'To-Do', userName, userEmail, userImage }
 
         axios.post('/tasks', postTask)
             .then(data => {

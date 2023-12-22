@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/task/myTask/update/:id',
-                element: <PrivateRouter><Update /></PrivateRouter>,
+                element: <Update />,
                 loader: ({ params }) => fetch(`http://localhost:5000/tasks/update/${params.id}`)
             },
         ]

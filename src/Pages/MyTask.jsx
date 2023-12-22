@@ -4,20 +4,30 @@ import { MdDelete } from "react-icons/md";
 import { MdUpdate } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import Lottie from "lottie-react";
+import loading from "../../public/loading.json"
 
 
 const MyTask = () => {
 
-    const axios = UseAxios()
+    const {user} = useContext(AuthContext);
+    const axios = UseAxios();
 
     const { data: tasks = [], isLoading, refetch } = useQuery({
         queryKey: ['myTasks'],
         queryFn: async () => {
-            const res = await axios.get(`/tasks/rashedulhoqueceo@gmail.com`);
+            const res = await axios.get(`/tasks/${user.email}`);
             return res.data
         }
     })
+
+    if(isLoading){
+        return <div className="my-40 flex justify-center">
+        <Lottie animationData={loading} className="h-96 w-96" />
+    </div>
+    }
 
     const handelDelete = (id) => {
         Swal.fire({
@@ -53,7 +63,9 @@ const MyTask = () => {
     return (
         <div>
             <h2 className="text-4xl font-bold">My Task</h2>
-            <div className="my-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {
+                tasks.length === 0 ? <p className="text-4xl font-bold my-24 text-center">You don&apos;t post any task</p> : 
+                <div className="my-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
                     tasks.map(task => <div key={task._id} className="card bg-base-100 shadow-xl mb-4">
                         <div className="card-body">
@@ -86,6 +98,7 @@ const MyTask = () => {
                     </div>)
                 }
             </div>
+            }
         </div>
     );
 };
