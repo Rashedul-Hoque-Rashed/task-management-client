@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
-        <div className='bg-[#03211b] overflow-x-hidden min-h-screen'>
+        <div className='bg-[#03211b] overflow-x-hidden'>
             <div className="flex flex-col md:flex-row items-center justify-center px-4 md:px-10 py-40 gap-10 max-w-[1620px] mx-auto">
                 <div data-aos="fade-right" data-aos-duration="2000" className="flex-1">
                     <div className='flex items-center gap-4'>
