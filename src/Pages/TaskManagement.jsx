@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxios from "../Hooks/UseAxios";
+import Lottie from "lottie-react";
+import loading from '../../public/loading.json'
 
 
 const TaskManagement = () => {
 
     const axios = UseAxios();
 
-    const { data: tasks = [], isLoading, refetch } = useQuery({
+    const { data: tasks = [], isLoading } = useQuery({
         queryKey: ['tasks'],
         queryFn: async () => {
             const res = await axios.get('/tasks');
@@ -17,6 +19,12 @@ const TaskManagement = () => {
     const todoTasks = tasks.filter(task => task.status === 'To-Do');
     const ongoingTasks = tasks.filter(task => task.status === 'Ongoing');
     const completedTasks = tasks.filter(task => task.status === 'Completed');
+
+    if(isLoading){
+        return <div className="my-40 flex justify-center">
+        <Lottie animationData={loading} className="h-96 w-96" />
+    </div>
+    }
 
 
     return (

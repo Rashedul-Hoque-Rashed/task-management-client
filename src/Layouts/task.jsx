@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { FaBars } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Task = () => {
 
+    const { user } = useContext(AuthContext);
 
     const navOptions = <>
         <li><NavLink
@@ -71,7 +74,14 @@ const Task = () => {
                     <label htmlFor="my-drawer" className="drawer-button flex items-center gap-2">
                         <FaBars className="text-xl cursor-pointer" /> <h5 className="text-2xl font-bold">Dashboard</h5>
                     </label>
-                    <img src="" alt="" className="w-10 h-10 rounded-full" />
+                    <div className="mr-2">
+                        {
+                            user && <div className="items-center lg:flex gap-2">
+                                <p className="font-bold md:mr-1 mr-2 text-[#222e48]">{user.displayName}</p>
+                                <img className="w-10 h-10 rounded-full" src={user.photoURL} alt="" />
+                            </div>
+                        }
+                    </div>
                 </div>
                 <div className="drawer-side overflow-hidden z-10">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>

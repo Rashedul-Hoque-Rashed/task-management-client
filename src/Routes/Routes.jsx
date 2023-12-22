@@ -11,6 +11,7 @@ import TaskManagement from "../Pages/TaskManagement";
 import PostTask from "../Pages/PostTask";
 import MyTask from "../Pages/MyTask";
 import Update from "../Pages/Update";
+import PrivateRouter from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -42,24 +43,24 @@ export const router = createBrowserRouter([
     },
     {
         path: '/task',
-        element: <Task />,
+        element: <PrivateRouter><Task /></PrivateRouter>,
         errorElement: <Error />,
         children: [
             {
                 path: '/task/taskManagement',
-                element: <TaskManagement />
+                element: <PrivateRouter><TaskManagement /></PrivateRouter>
             },
             {
                 path: '/task/post',
-                element: <PostTask />
+                element: <PrivateRouter><PostTask /></PrivateRouter>
             },
             {
                 path: '/task/myTask',
-                element: <MyTask />
+                element: <PrivateRouter><MyTask /></PrivateRouter>
             },
             {
                 path: '/task/myTask/update/:id',
-                element: <Update />,
+                element: <PrivateRouter><Update /></PrivateRouter>,
                 loader: ({ params }) => fetch(`http://localhost:5000/tasks/update/${params.id}`)
             },
         ]
