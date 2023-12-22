@@ -4,11 +4,13 @@ import Lottie from "lottie-react";
 import loading from '../../public/loading.json'
 
 
+
+
 const TaskManagement = () => {
 
     const axios = UseAxios();
 
-    const { data: tasks = [], isLoading } = useQuery({
+    const { data: tasks = [], isLoading, refetch } = useQuery({
         queryKey: ['tasks'],
         queryFn: async () => {
             const res = await axios.get('/tasks');
@@ -20,10 +22,20 @@ const TaskManagement = () => {
     const ongoingTasks = tasks.filter(task => task.status === 'Ongoing');
     const completedTasks = tasks.filter(task => task.status === 'Completed');
 
-    if(isLoading){
+    if (isLoading) {
         return <div className="my-40 flex justify-center">
-        <Lottie animationData={loading} className="h-96 w-96" />
-    </div>
+            <Lottie animationData={loading} className="h-96 w-96" />
+        </div>
+    }
+
+    const handelStatus = (id, status) => {
+        const updateStatus = {status};
+
+        axios.put(`/tasks/status/${id}`, updateStatus)
+            .then(data => {
+                console.log(data.data);
+                refetch()
+            })
     }
 
 
@@ -37,13 +49,25 @@ const TaskManagement = () => {
                         todoTasks.map(task => <div key={task._id} className="card bg-base-100 shadow-xl mb-4">
                             <div className="card-body">
                                 <div className="flex justify-between items-center">
-                                <h2 className="card-title text-[#222E48] ">{task.title}</h2>
-                                <h4 className="text-[#222e48] text-base font-medium">Deadline: {task.deadline}</h4>
+                                    <h2 className="card-title text-[#222E48] ">{task.title}</h2>
+                                    <h4 className="text-[#222e48] text-base font-medium">Deadline: {task.deadline}</h4>
                                 </div>
                                 <p className="text-[#222E48] my-2">{task.description}</p>
-                                <p className="text-base font-medium text-white px-4 py-2 bg-rose-700 w-fit rounded-full">{task.priority}</p>
+                                <div className="flex flex-col md:flex-row items-center justify-between">
+                                    <div>
+                                        <p className="text-base font-medium text-white px-4 py-2 bg-rose-700 w-fit rounded-full">{task.priority}</p>
+                                    </div>
+                                    <div>
+                                        <button onClick={() => handelStatus(task._id, 'Ongoing')} className="text-base font-medium text-white px-4 py-2 bg-amber-400 w-fit rounded-full mr-2">
+                                            Ongoing
+                                        </button>
+                                        <button onClick={() => handelStatus(task._id, 'Completed')} className="text-base font-medium text-white px-4 py-2 bg-green-400 w-fit rounded-full">
+                                            Completed
+                                        </button>
+                                    </div>
+                                </div>
                                 <div className="flex items-center mt-4 gap-4 flex-col md:flex-row">
-                                    <img src={task.userImage} alt="" className="w-14 h-14 rounded-full"/>
+                                    <img src={task.userImage} alt="" className="w-14 h-14 rounded-full" />
                                     <div>
                                         <h4 className="text-[#222E48] font-medium">{task.userName}</h4>
                                         <h6 className="text-[#222E48] text-sm font-medium">{task.userEmail}</h6>
@@ -62,13 +86,25 @@ const TaskManagement = () => {
                         ongoingTasks.map(task => <div key={task._id} className="card bg-base-100 shadow-xl mb-4">
                             <div className="card-body">
                                 <div className="flex justify-between items-center">
-                                <h2 className="card-title text-[#222E48] ">{task.title}</h2>
-                                <h4 className="text-[#222e48] text-base font-medium">Deadline: {task.deadline}</h4>
+                                    <h2 className="card-title text-[#222E48] ">{task.title}</h2>
+                                    <h4 className="text-[#222e48] text-base font-medium">Deadline: {task.deadline}</h4>
                                 </div>
                                 <p className="text-[#222E48] my-2">{task.description}</p>
-                                <p className="text-base font-medium text-white px-4 py-2 bg-rose-700 w-fit rounded-full">{task.priority}</p>
+                                <div className="flex flex-col md:flex-row items-center justify-between">
+                                    <div>
+                                        <p className="text-base font-medium text-white px-4 py-2 bg-rose-700 w-fit rounded-full">{task.priority}</p>
+                                    </div>
+                                    <div>
+                                        <button onClick={() => handelStatus(task._id, 'To-Do')} className="text-base font-medium text-white px-4 py-2 bg-red-400 w-fit rounded-full mr-2">
+                                            To-Do
+                                        </button>
+                                        <button onClick={() => handelStatus(task._id, 'Completed')} className="text-base font-medium text-white px-4 py-2 bg-green-400 w-fit rounded-full">
+                                            Completed
+                                        </button>
+                                    </div>
+                                </div>
                                 <div className="flex items-center mt-4 gap-4 flex-col md:flex-row">
-                                    <img src={task.userImage} alt="" className="w-14 h-14 rounded-full"/>
+                                    <img src={task.userImage} alt="" className="w-14 h-14 rounded-full" />
                                     <div>
                                         <h4 className="text-[#222E48] font-medium">{task.userName}</h4>
                                         <h6 className="text-[#222E48] text-sm font-medium">{task.userEmail}</h6>
@@ -87,13 +123,25 @@ const TaskManagement = () => {
                         completedTasks.map(task => <div key={task._id} className="card bg-base-100 shadow-xl mb-4">
                             <div className="card-body">
                                 <div className="flex justify-between items-center">
-                                <h2 className="card-title text-[#222E48] ">{task.title}</h2>
-                                <h4 className="text-[#222e48] text-base font-medium">Deadline: {task.deadline}</h4>
+                                    <h2 className="card-title text-[#222E48] ">{task.title}</h2>
+                                    <h4 className="text-[#222e48] text-base font-medium">Deadline: {task.deadline}</h4>
                                 </div>
                                 <p className="text-[#222E48] my-2">{task.description}</p>
-                                <p className="text-base font-medium text-white px-4 py-2 bg-rose-700 w-fit rounded-full">{task.priority}</p>
+                                <div className="flex flex-col md:flex-row items-center justify-between">
+                                    <div>
+                                        <p className="text-base font-medium text-white px-4 py-2 bg-rose-700 w-fit rounded-full">{task.priority}</p>
+                                    </div>
+                                    <div>
+                                        <button onClick={() => handelStatus(task._id, 'To-Do')} className="text-base font-medium text-white px-4 py-2 bg-red-400 w-fit rounded-full mr-2">
+                                            To-Do
+                                        </button>
+                                        <button onClick={() => handelStatus(task._id, 'Ongoing')} className="text-base font-medium text-white px-4 py-2 bg-amber-400 w-fit rounded-full">
+                                            Ongoing
+                                        </button>
+                                    </div>
+                                </div>
                                 <div className="flex items-center mt-4 gap-4 flex-col md:flex-row">
-                                    <img src={task.userImage} alt="" className="w-14 h-14 rounded-full"/>
+                                    <img src={task.userImage} alt="" className="w-14 h-14 rounded-full" />
                                     <div>
                                         <h4 className="text-[#222E48] font-medium">{task.userName}</h4>
                                         <h6 className="text-[#222E48] text-sm font-medium">{task.userEmail}</h6>
